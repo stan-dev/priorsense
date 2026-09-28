@@ -2,7 +2,6 @@
 
 ``` r
 
-library(cmdstanr)
 library(posterior)
 library(priorsense)
 ```
