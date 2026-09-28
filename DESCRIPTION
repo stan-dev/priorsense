@@ -16,7 +16,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c ("namespace", "rd", "srr::srr_stats_roclet"))
 Imports:
     checkmate (>= 2.3.4),
-    cli,
+    cli (>= 3.6.6),
     ggdist (>= 3.3.3),
     ggh4x (>= 0.3.1),
     ggplot2 (>= 4.0.3),
