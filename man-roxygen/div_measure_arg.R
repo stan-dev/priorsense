@@ -18,14 +18,14 @@
 ##' [stats::density()]. Requires the `philentropy` package. See
 ##' [philentropy::hellinger()].
 ##'
-##' * `"kl_dist"`: Kullback-Leibler distance. First esimates density using
+##' * `"kl_dist"`: Kullback-Leibler distance. First estimates density using
 ##' [stats::density()]. Requires the `philentropy` package. See
 ##' [philentropy::kullback_leibler_distance()].
 ##'
 ##' * `"kl_div"`: Kullback-Leibler divergence. First estimates density using
 ##' [stats::density()]. Requires the `philentropy` package. See
 ##' [philentropy::kullback_leibler_distance()].
-##' 
+##'
 ##' * `"ks_dist"`: Kolmogorov-Smirnov distance. See [stats::ks.test()].
 ##'
 ##' * `"ws_dist"`: Wassterstein distance (pass `measure_args = list(p = N)`) for
