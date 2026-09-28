@@ -89,7 +89,7 @@ method. See function \code{\link[=cjs_dist]{cjs_dist()}} for more details.
 \item \code{"hellinger_dist"}: Hellinger distance. First estimates density using
 \code{\link[stats:density]{stats::density()}}. Requires the \code{philentropy} package. See
 \code{\link[philentropy:hellinger]{philentropy::hellinger()}}.
-\item \code{"kl_dist"}: Kullback-Leibler distance. First esimates density using
+\item \code{"kl_dist"}: Kullback-Leibler distance. First estimates density using
 \code{\link[stats:density]{stats::density()}}. Requires the \code{philentropy} package. See
 \code{\link[philentropy:kullback_leibler_distance]{philentropy::kullback_leibler_distance()}}.
 \item \code{"kl_div"}: Kullback-Leibler divergence. First estimates density using
