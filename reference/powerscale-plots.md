@@ -138,9 +138,9 @@ plot(x, type = c("dens", "ecdf", "quantities"), ...)
     Requires the `philentropy` package. See
     [`philentropy::hellinger()`](https://drostlab.github.io/philentropy/reference/hellinger.html).
 
-  - `"kl_dist"`: Kullback-Leibler distance. First esimates density using
-    [`stats::density()`](https://rdrr.io/r/stats/density.html). Requires
-    the `philentropy` package. See
+  - `"kl_dist"`: Kullback-Leibler distance. First estimates density
+    using [`stats::density()`](https://rdrr.io/r/stats/density.html).
+    Requires the `philentropy` package. See
     [`philentropy::kullback_leibler_distance()`](https://drostlab.github.io/philentropy/reference/kullback_leibler_distance.html).
 
   - `"kl_div"`: Kullback-Leibler divergence. First estimates density
