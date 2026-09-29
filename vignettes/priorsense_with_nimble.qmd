@@ -75,7 +75,7 @@ mcmc <- buildMCMC(
   )
 )
 
-cmcmc <- compileNimble(mcmc, project = model)
+cmcmc <- compileNimble(mcmc, project = cmodel)
 ```
 
 For `priorsense` compatibility, it is easiest to save the draws as a
@@ -84,9 +84,18 @@ the resulting object can be transformed to a `posterior::draws_df` object, with
 `posterior::as_draws_df`.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+fit <- readRDS(system.file("extdata", "univariate_normal_nimble.RDS", package = "priorsense"))
+
+```
+
+```{r}
 #| message: false
 #| warning: false
 #| results: false
+#| eval: false
 
 fit <- runMCMC(
   cmcmc,

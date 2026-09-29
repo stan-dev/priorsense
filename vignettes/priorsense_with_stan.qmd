@@ -16,7 +16,6 @@ options(priorsense.plot_help_text = FALSE)
 ```{r}
 #| message: false
 #| warning: false
-library(cmdstanr)
 library(posterior)
 library(priorsense)
 ```
@@ -39,16 +38,22 @@ model <- example_powerscale_model("univariate_normal")
 ```{r}
 #| echo: false
 #| results: asis
-library(priorsense)
-model <- example_powerscale_model()
 cat("```stan\n")
 cat(model$model_code)
 cat("```")
 ```
 
 We first fit the model using Stan:
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+fit <- readRDS(system.file("extdata", "univariate_normal_rstan.RDS", package = "priorsense"))
+
+```
 
 ```{r}
+#| eval: false
 #| message: false
 #| warning: false
 fit <- rstan::stan(

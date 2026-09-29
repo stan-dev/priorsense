@@ -47,9 +47,19 @@ cat("```")
 
 `R2jags::jags()` or `jagsUI::jags()` can be used to fit the model. Ensure that the required variables are monitored.
 
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+fit <- readRDS(system.file("extdata", "univariate_normal_jags.RDS", package = "priorsense"))
+```
+
+
 ```{r}
 #| message: false
 #| warning: false
+#| eval: false
 model_con <- textConnection(model$model_code)
 data <- model$data
 
@@ -63,7 +73,8 @@ fit <- R2jags::jags(
   n.chains = 4,
   DIC = FALSE,
   quiet = TRUE,
-  progress.bar = "none"
+  progress.bar = "none",
+  jags.seed = 123
 )
 ```
 
