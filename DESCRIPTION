@@ -31,7 +31,7 @@ Imports:
 Suggests:
     bayesplot (>= 1.16.0),
     brms (>= 2.23.0),
-    cmdstanr (>= 0.8.1),
+    cmdstanr (>= 0.9.0),
     iwmm (>= 0.0.1),
     nimble (>= 1.4.3),
     philentropy (>= 0.10.0),
