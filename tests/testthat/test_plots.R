@@ -1,3 +1,5 @@
+options(priorsense.plot_help_text = FALSE)
+
 eight_schools_example <- example_powerscale_model("eight_schools")
 
 ps <- powerscale_sequence(eight_schools_example$draws, length = 3)
