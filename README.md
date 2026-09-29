@@ -38,7 +38,7 @@ from other software. Power-scaling sensitivity analysis checks are described in
 
 ### Resources
 
-* [mc-stan.org/priorsense](https://mc-stan.org/priorsense) (online documentation, vignettes)
+* [mc-stan.org/priorsense](https://mc-stan.org/priorsense/) (online documentation, vignettes)
 * [Ask a question](https://discourse.mc-stan.org) (Stan Forums on Discourse)
 * [Open an issue](https://github.com/stan-dev/priorsense/issues) (GitHub issues for bug reports, feature requests)
 

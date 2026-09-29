@@ -30,9 +30,18 @@ via`example_powerscale_model("univariate_normal")`. By also defining separate
 sensitivity for each prior separately.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+fit <- readRDS(system.file("extdata", "univariate_normal_brms.RDS", package = "priorsense"))
+
+```
+
+```{r}
 #| message: false
 #| warning: false
 #| results: false
+#| eval: false
 normal_model <- example_powerscale_model(model = "univariate_normal")
 
 priors <- c(
