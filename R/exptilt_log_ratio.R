@@ -6,15 +6,12 @@
 ##' @return log ratio
 ##' @keywords internal
 ##' @noRd
-exptilt_log_ratio <- function(draws,
-                              eta,
-                              tilt_fun,
-                              tilt_fun_args) {
+exptilt_log_ratio <- function(draws, eta, tilt_fun, tilt_fun_args) {
+    # calculate log ratios for tilting
+    tilted <- eta *
+        do.call(tilt_fun, args = c(draws = draws, tilt_fun_args %||% list()))
 
-  # calculate log ratios for tilting
-  tilted <- eta * tilt_fun(draws)
-  
-  return(tilted)
+    return(tilted)
 }
 
 # Density ratio function for moment matching
@@ -26,12 +23,10 @@ exptilt_log_ratio <- function(draws,
 ##' @return vector of density ratio
 ##' @keywords internal
 ##' @noRd
-powerscale_log_ratio_fun <- function(draws, fit, alpha, component_fn, ...) {
+exptilt_log_ratio_fun <- function(draws, fit, alpha, component_fn, ...) {
+    constr_draws <- iwmm::constrain_draws(fit, draws)
 
-  constr_draws <- iwmm::constrain_draws(fit, draws)
+    component_draws <- rowsums_draws(component_fn(constr_draws))
 
-  component_draws <- rowsums_draws(component_fn(constr_draws))
-   
-  component_draws * (alpha - 1)
-  
+    component_draws * (alpha - 1)
 }
