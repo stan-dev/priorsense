@@ -55,6 +55,7 @@ Instantiate and compile the model as usual.
 #| message: false
 #| warning: false
 #| results: false
+#| eval: false
 
 inits <- list(
   mu = 0,
