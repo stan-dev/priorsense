@@ -79,7 +79,7 @@ fit <- runMCMC(
   niter = 20000,
   nburnin = 5000,
   nchains = 4,
-  thin = 5,
+  thin = 15,
   setSeed = c(123, 456, 789, 101112),
   samplesAsCodaMCMC = TRUE # alternatively, coerce the output using `posterior::as_draws_df`
 )
@@ -97,8 +97,8 @@ powerscale_sensitivity(fit)
     Likelihood selection: all data
 
      variable prior likelihood                           diagnosis
-           mu 0.398      0.568 potential prior-likelihood conflict
-        sigma 0.291      0.531 potential prior-likelihood conflict
+           mu 0.399      0.578 potential prior-likelihood conflict
+        sigma 0.323      0.607 potential prior-likelihood conflict
 
 ``` r
 
@@ -110,8 +110,8 @@ powerscale_sensitivity(fit, prior_selection = "sigma")
     Likelihood selection: all data
 
      variable prior likelihood diagnosis
-           mu 0.005      0.568         -
-        sigma 0.008      0.531         -
+           mu 0.005      0.578         -
+        sigma 0.009      0.607         -
 
 ``` r
 
@@ -123,12 +123,12 @@ powerscale_sensitivity(fit, prior_selection = "mu")
     Likelihood selection: all data
 
      variable prior likelihood                           diagnosis
-           mu 0.402      0.568 potential prior-likelihood conflict
-        sigma 0.298      0.531 potential prior-likelihood conflict
+           mu 0.404      0.578 potential prior-likelihood conflict
+        sigma 0.332      0.607 potential prior-likelihood conflict
 
 ``` r
 
 powerscale_plot_dens(fit)
 ```
 
-![](priorsense_with_nimble_files/figure-html/unnamed-chunk-11-1.png)
+![](priorsense_with_nimble_files/figure-html/unnamed-chunk-12-1.png)

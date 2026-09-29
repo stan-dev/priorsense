@@ -167,7 +167,7 @@
 <span>  niter <span class="op">=</span> <span class="fl">20000</span>,</span>
 <span>  nburnin <span class="op">=</span> <span class="fl">5000</span>,</span>
 <span>  nchains <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  thin <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  thin <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>  setSeed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">123</span>, <span class="fl">456</span>, <span class="fl">789</span>, <span class="fl">101112</span><span class="op">)</span>,</span>
 <span>  samplesAsCodaMCMC <span class="op">=</span> <span class="cn">TRUE</span> <span class="co"># alternatively, coerce the output using `posterior::as_draws_df`</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -182,8 +182,8 @@ Prior selection: all priors
 Likelihood selection: all data
 
  variable prior likelihood                           diagnosis
-       mu 0.398      0.568 potential prior-likelihood conflict
-    sigma 0.291      0.531 potential prior-likelihood conflict</code></pre>
+       mu 0.399      0.578 potential prior-likelihood conflict
+    sigma 0.323      0.607 potential prior-likelihood conflict</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -195,8 +195,8 @@ Prior selection: sigma
 Likelihood selection: all data
 
  variable prior likelihood diagnosis
-       mu 0.005      0.568         -
-    sigma 0.008      0.531         -</code></pre>
+       mu 0.005      0.578         -
+    sigma 0.009      0.607         -</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -208,8 +208,8 @@ Prior selection: mu
 Likelihood selection: all data
 
  variable prior likelihood                           diagnosis
-       mu 0.402      0.568 potential prior-likelihood conflict
-    sigma 0.298      0.531 potential prior-likelihood conflict</code></pre>
+       mu 0.404      0.578 potential prior-likelihood conflict
+    sigma 0.332      0.607 potential prior-likelihood conflict</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -217,7 +217,7 @@ Likelihood selection: all data
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/powerscale-plots.html">powerscale_plot_dens</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div>
-<figure><p><img src="priorsense_with_nimble_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+<figure><p><img src="priorsense_with_nimble_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
 </figure>
 </div>
 </div>
