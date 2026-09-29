@@ -36,7 +36,7 @@ fit <- runMCMC(
     niter = 20000,
     nburnin = 5000,
     nchains = 4,
-    thin = 5,
+    thin = 15,
     setSeed = c(123, 456, 789, 101112),
     samplesAsCodaMCMC = FALSE
 )
