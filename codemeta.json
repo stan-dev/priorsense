@@ -96,7 +96,7 @@
       "@type": "SoftwareApplication",
       "identifier": "cmdstanr",
       "name": "cmdstanr",
-      "version": ">= 0.8.1"
+      "version": ">= 0.9.0"
     },
     {
       "@type": "SoftwareApplication",
@@ -227,6 +227,7 @@
       "@type": "SoftwareApplication",
       "identifier": "cli",
       "name": "cli",
+      "version": ">= 3.6.6",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -354,7 +355,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "9148.757KB",
+  "fileSize": "7670.632KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
