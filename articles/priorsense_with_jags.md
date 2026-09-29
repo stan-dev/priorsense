@@ -56,7 +56,8 @@ fit <- R2jags::jags(
   n.chains = 4,
   DIC = FALSE,
   quiet = TRUE,
-  progress.bar = "none"
+  progress.bar = "none",
+  jags.seed = 123
 )
 ```
 
@@ -106,4 +107,4 @@ powerscale_sensitivity(fit, prior_selection = "mu")
 powerscale_plot_dens(fit)
 ```
 
-![](priorsense_with_jags_files/figure-html/unnamed-chunk-9-1.png)
+![](priorsense_with_jags_files/figure-html/unnamed-chunk-10-1.png)

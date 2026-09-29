@@ -107,7 +107,7 @@ powerscale_sensitivity(fit, prior_selection = "mu")
 powerscale_plot_dens(fit)
 ```
 
-![](priorsense_with_stan_files/figure-html/unnamed-chunk-9-1.png)
+![](priorsense_with_stan_files/figure-html/unnamed-chunk-10-1.png)
 
 In some cases, setting `moment_match = TRUE` will improve unreliable
 estimates at the cost of some further computation. This requires the

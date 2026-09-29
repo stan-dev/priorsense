@@ -31,7 +31,7 @@ al. (2023)](https://doi.org/10.1007/s11222-023-10366-5).
 
 ### Resources
 
-- [mc-stan.org/priorsense](https://mc-stan.org/priorsense) (online
+- [mc-stan.org/priorsense](https://mc-stan.org/priorsense/) (online
   documentation, vignettes)
 - [Ask a question](https://discourse.mc-stan.org) (Stan Forums on
   Discourse)

@@ -61,7 +61,7 @@ mcmc <- buildMCMC(
   )
 )
 
-cmcmc <- compileNimble(mcmc, project = model)
+cmcmc <- compileNimble(mcmc, project = cmodel)
 ```
 
 For `priorsense` compatibility, it is easiest to save the draws as a
@@ -131,4 +131,4 @@ powerscale_sensitivity(fit, prior_selection = "mu")
 powerscale_plot_dens(fit)
 ```
 
-![](priorsense_with_nimble_files/figure-html/unnamed-chunk-10-1.png)
+![](priorsense_with_nimble_files/figure-html/unnamed-chunk-11-1.png)
