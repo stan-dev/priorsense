@@ -252,17 +252,17 @@
 <polyline points='37.39,350.95 40.13,350.95 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <polyline points='37.39,298.59 40.13,298.59 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
 <text transform='translate(13.05,278.97) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: sans;' textLength='29.95px' lengthAdjust='spacingAndGlyphs'>ECDF</text>
-<rect x='275.90' y='542.28' width='229.00' height='28.24' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<text x='281.38' y='560.19' style='font-size: 11.00px; font-family: sans;' textLength='99.07px' lengthAdjust='spacingAndGlyphs'>Power-scaling alpha</text>
-<rect x='385.93' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
-<line x1='387.66' y1='556.40' x2='401.48' y2='556.40' style='stroke-width: 1.07; stroke: #237BED; stroke-linecap: butt;' />
-<rect x='426.40' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
-<line x1='428.13' y1='556.40' x2='441.95' y2='556.40' style='stroke-width: 1.07; stroke: #242021; stroke-linecap: butt;' />
-<rect x='459.54' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
-<line x1='461.26' y1='556.40' x2='475.09' y2='556.40' style='stroke-width: 1.07; stroke: #DF4F40; stroke-linecap: butt;' />
-<text x='408.69' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='12.23px' lengthAdjust='spacingAndGlyphs'>0.8</text>
-<text x='449.16' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>1</text>
-<text x='482.30' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='17.13px' lengthAdjust='spacingAndGlyphs'>1.25</text>
+<rect x='208.08' y='542.28' width='364.64' height='28.24' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<text x='213.56' y='560.19' style='font-size: 11.00px; font-family: sans;' textLength='140.02px' lengthAdjust='spacingAndGlyphs'>Posterior after power-scaling</text>
+<rect x='359.06' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
+<line x1='360.79' y1='556.40' x2='374.61' y2='556.40' style='stroke-width: 1.07; stroke: #237BED; stroke-linecap: butt;' />
+<rect x='431.10' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
+<line x1='432.82' y1='556.40' x2='446.65' y2='556.40' style='stroke-width: 1.07; stroke: #242021; stroke-linecap: butt;' />
+<rect x='495.79' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
+<line x1='497.52' y1='556.40' x2='511.35' y2='556.40' style='stroke-width: 1.07; stroke: #DF4F40; stroke-linecap: butt;' />
+<text x='381.82' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='43.80px' lengthAdjust='spacingAndGlyphs'>alpha = 0.8</text>
+<text x='453.86' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='36.46px' lengthAdjust='spacingAndGlyphs'>alpha = 1</text>
+<text x='518.55' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='48.69px' lengthAdjust='spacingAndGlyphs'>alpha = 1.25</text>
 <text x='66.29' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='135.74px' lengthAdjust='spacingAndGlyphs'>Normal model ecdf plot</text>
 </g>
 </svg>

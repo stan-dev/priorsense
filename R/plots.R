@@ -190,7 +190,7 @@ prepare_plot <- function(d, resample, variable, colors, ...) {
       drop = TRUE
     ) +
     ggplot2::scale_color_gradientn(
-      name = "Power-scaling alpha",
+      name = "Posterior after power-scaling",
       colours = colors[1:3],
       trans = "log",
       limits = c(
@@ -202,14 +202,17 @@ prepare_plot <- function(d, resample, variable, colors, ...) {
         1,
         max(d[[".powerscale_alpha"]])
       ),
-      labels = c(
-        round(min(d[[".powerscale_alpha"]]), digits = 3),
-        "1",
-        round(max(d[[".powerscale_alpha"]]), digits = 3)
+      labels = paste0(
+        "alpha = ",
+        c(
+          round(min(d[[".powerscale_alpha"]]), digits = 3),
+          "1",
+          round(max(d[[".powerscale_alpha"]]), digits = 3)
+        )
       )
     ) +
     ggplot2::scale_fill_gradientn(
-      name = "Power-scaling alpha",
+      name = "Posterior after power-scaling",
       colours = c(colors[1:3]),
       trans = "log",
       limits = c(
@@ -221,10 +224,13 @@ prepare_plot <- function(d, resample, variable, colors, ...) {
         1,
         max(d[[".powerscale_alpha"]])
       ),
-      labels = c(
-        round(min(d[[".powerscale_alpha"]]), digits = 3),
-        "1",
-        round(max(d[[".powerscale_alpha"]]), digits = 3)
+      labels = paste0(
+        "alpha = ",
+        c(
+          round(min(d[[".powerscale_alpha"]]), digits = 3),
+          "1",
+          round(max(d[[".powerscale_alpha"]]), digits = 3)
+        )
       )
     )
 
@@ -232,7 +238,7 @@ prepare_plot <- function(d, resample, variable, colors, ...) {
     p <- p +
       ggplot2::guides(
         color = ggplot2::guide_legend(
-          title = "Power-scaling alpha",
+          title = "Posterior after power-scaling",
           override.aes = ggplot2::aes(linetype = "solid"),
           order = 5
         )
@@ -241,7 +247,7 @@ prepare_plot <- function(d, resample, variable, colors, ...) {
     p <- p +
       ggplot2::guides(
         fill = ggplot2::guide_legend(
-          title = "Power-scaling alpha",
+          title = "Posterior after power-scaling",
           order = 5
         )
       )
@@ -534,7 +540,10 @@ powerscale_plot_dens.powerscaled_sequence <-
             data = prior_data,
             mapping = ggplot2::aes(
               xdist = .data$prior,
-              group = interaction(.data$variable, .data$component),
+              group = interaction(
+                .data$variable,
+                .data$component
+              ),
               scale = .data$.slab_scale,
               slab_fill = "Prior distribution"
             ),
@@ -878,7 +887,7 @@ powerscale_plot_ecdf.powerscaled_sequence <-
       p <- p +
         ggplot2::guides(
           colour = ggplot2::guide_legend(
-            title = "Power-scaling alpha",
+            title = "Posterior after power-scaling",
             order = 5
           )
         )

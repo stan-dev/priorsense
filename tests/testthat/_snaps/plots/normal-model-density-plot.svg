@@ -299,17 +299,17 @@
 <text x='498.01' y='280.81' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='12.23px' lengthAdjust='spacingAndGlyphs'>1.0</text>
 <text x='600.63' y='280.81' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='12.23px' lengthAdjust='spacingAndGlyphs'>1.5</text>
 <text x='703.26' y='280.81' text-anchor='middle' style='font-size: 8.80px; fill: #4D4D4D; font-family: sans;' textLength='12.23px' lengthAdjust='spacingAndGlyphs'>2.0</text>
-<rect x='258.58' y='542.28' width='229.00' height='28.24' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<text x='264.06' y='560.19' style='font-size: 11.00px; font-family: sans;' textLength='99.07px' lengthAdjust='spacingAndGlyphs'>Power-scaling alpha</text>
-<rect x='368.60' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
-<line x1='370.33' y1='556.40' x2='384.15' y2='556.40' style='stroke-width: 0.75; stroke: #237BED;' />
-<rect x='409.08' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
-<line x1='410.80' y1='556.40' x2='424.63' y2='556.40' style='stroke-width: 0.75; stroke: #242021;' />
-<rect x='442.21' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
-<line x1='443.94' y1='556.40' x2='457.76' y2='556.40' style='stroke-width: 0.75; stroke: #DF4F40;' />
-<text x='391.36' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='12.23px' lengthAdjust='spacingAndGlyphs'>0.8</text>
-<text x='431.83' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>1</text>
-<text x='464.97' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='17.13px' lengthAdjust='spacingAndGlyphs'>1.25</text>
+<rect x='190.76' y='542.28' width='364.64' height='28.24' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<text x='196.24' y='560.19' style='font-size: 11.00px; font-family: sans;' textLength='140.02px' lengthAdjust='spacingAndGlyphs'>Posterior after power-scaling</text>
+<rect x='341.73' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
+<line x1='343.46' y1='556.40' x2='357.29' y2='556.40' style='stroke-width: 0.75; stroke: #237BED;' />
+<rect x='413.77' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
+<line x1='415.50' y1='556.40' x2='429.32' y2='556.40' style='stroke-width: 0.75; stroke: #242021;' />
+<rect x='478.47' y='547.76' width='17.28' height='17.28' style='stroke-width: 1.07; stroke: none; fill: #EBEBEB;' />
+<line x1='480.20' y1='556.40' x2='494.02' y2='556.40' style='stroke-width: 0.75; stroke: #DF4F40;' />
+<text x='364.49' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='43.80px' lengthAdjust='spacingAndGlyphs'>alpha = 0.8</text>
+<text x='436.53' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='36.46px' lengthAdjust='spacingAndGlyphs'>alpha = 1</text>
+<text x='501.23' y='559.43' style='font-size: 8.80px; font-family: sans;' textLength='48.69px' lengthAdjust='spacingAndGlyphs'>alpha = 1.25</text>
 <text x='31.63' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='152.62px' lengthAdjust='spacingAndGlyphs'>Normal model density plot</text>
 </g>
 </svg>
