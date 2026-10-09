@@ -3,6 +3,11 @@
 ##' @param variable A character vector of variable names. If `NULL`
 ##'   (the default) all variables will be plotted.
 ##' @param variables Alias of `variable`.
+##' @param prior An optional named `distributional` vector containing priors to
+##'   overlay. Names must correspond to plotted variable names. Priors for
+##'   variables that are not plotted, and plotted variables without a supplied
+##'   prior, are silently ignored. Currently only used by
+##'   `powerscale_plot_dens()`.
 ##' @param quantity A character vector specifying one or several
 ##'   quantities to plot. Options are "mean", "median", "sd", "mad",
 ##'   "quantile".

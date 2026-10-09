@@ -262,6 +262,75 @@ prepare_plot <- function(d, resample, variable, colors, ...) {
   return(p)
 }
 
+##' Maximum density for a sample, using the same density estimator as ggdist
+##' @keywords internal
+##' @noRd
+sample_density_max <- function(value, weights = NULL) {
+  dens <- ggdist::density_bounded(
+    x = value,
+    weights = weights,
+    trim = FALSE
+  )
+  max(dens$y, na.rm = TRUE)
+}
+
+##' Maximum density for a distributional object
+##' @keywords internal
+##' @noRd
+distribution_density_max <- function(x, n = 501) {
+  limits <- unlist(
+    stats::quantile(x, p = c(0.001, 0.999)),
+    use.names = FALSE
+  )
+  grid <- seq(limits[[1]], limits[[2]], length.out = n)
+  dens <- unlist(stats::density(x, at = grid), use.names = FALSE)
+  max(dens, na.rm = TRUE)
+}
+
+##' Scale prior and posterior slabs relative to their joint panel maximum
+##' @keywords internal
+##' @noRd
+add_prior_slab_scales <- function(d, prior_data, resample) {
+  d$.slab_scale <- 0.9
+  prior_data$.slab_scale <- 0.9
+
+  panel_keys <- unique(prior_data[c("variable", "component")])
+
+  for (i in seq_len(nrow(panel_keys))) {
+    variable_i <- panel_keys$variable[[i]]
+    component_i <- panel_keys$component[[i]]
+    panel <- d$variable == variable_i & d$component == component_i
+    panel_data <- d[panel, , drop = FALSE]
+
+    alpha_groups <- split(
+      panel_data,
+      panel_data[[".powerscale_alpha"]]
+    )
+    posterior_max <- max(vapply(
+      alpha_groups,
+      function(alpha_data) {
+        weights <- if (resample) {
+          NULL
+        } else {
+          exp(alpha_data$.log_weight)
+        }
+        sample_density_max(alpha_data$value, weights = weights)
+      },
+      numeric(1)
+    ))
+
+    prior_row <- prior_data$variable == variable_i &
+      prior_data$component == component_i
+    prior_max <- distribution_density_max(prior_data$prior[prior_row])
+    joint_max <- max(posterior_max, prior_max)
+
+    d$.slab_scale[panel] <- 0.9 * posterior_max / joint_max
+    prior_data$.slab_scale[prior_row] <- 0.9 * prior_max / joint_max
+  }
+
+  list(draws = d, prior = prior_data)
+}
+
 ##' @rdname powerscale-plots
 ##' @export
 powerscale_plot_dens <- function(x, ...) {
@@ -274,6 +343,7 @@ powerscale_plot_dens.default <-
     x,
     variable = NULL,
     variables = NULL,
+    prior = NULL,
     length = 3,
     resample = FALSE,
     intervals = c(0.5, 0.8, 0.95),
@@ -290,6 +360,7 @@ powerscale_plot_dens.default <-
       ps,
       variable = variable,
       variables = variables,
+      prior = prior,
       length = length,
       resample = resample,
       intervals = intervals,
@@ -308,6 +379,7 @@ powerscale_plot_dens.powerscaled_sequence <-
     x,
     variable = NULL,
     variables = NULL,
+    prior = NULL,
     resample = FALSE,
     intervals = c(0.5, 0.8, 0.95),
     trim = NULL,
@@ -351,6 +423,17 @@ powerscale_plot_dens.powerscaled_sequence <-
     }
 
     checkmate::assert_character(variable, null.ok = TRUE)
+    if (!is.null(prior)) {
+      checkmate::assert_true(
+        distributional::is_distribution(prior),
+        .var.name = "prior"
+      )
+      checkmate::assert_names(
+        names(prior),
+        type = "unique",
+        .var.name = "names(prior)"
+      )
+    }
     checkmate::assert_logical(resample, len = 1)
     checkmate::assert_logical(help_text, len = 1)
     checkmate::assert_character(colors, len = 3, null.ok = TRUE)
@@ -408,6 +491,32 @@ powerscale_plot_dens.powerscaled_sequence <-
 
       dsub <- d[d$variable %in% sub_variable, ]
 
+      prior_variables <- intersect(sub_variable, names(prior))
+      prior_data <- NULL
+      posterior_slab_mapping <- NULL
+      if (length(prior_variables) > 0L) {
+        prior_data <- expand.grid(
+          variable = prior_variables,
+          component = unique(as.character(dsub$component)),
+          stringsAsFactors = FALSE
+        )
+        prior_data$prior <- prior[match(
+          prior_data$variable,
+          names(prior)
+        )]
+
+        scaled_data <- add_prior_slab_scales(
+          d = dsub,
+          prior_data = prior_data,
+          resample = resample
+        )
+        dsub <- scaled_data$draws
+        prior_data <- scaled_data$prior
+        posterior_slab_mapping <- ggplot2::aes(
+          scale = .data$.slab_scale
+        )
+      }
+
       plot <- prepare_plot(
         dsub,
         resample = resample,
@@ -419,8 +528,35 @@ powerscale_plot_dens.powerscaled_sequence <-
       # here we have to draw 2 stat slabs (one with alpha 0 and black fill,
       # one with fill as NA) to get the legend correct see
       # https://github.com/mjskay/ggdist/issues/134
+      if (!is.null(prior_data)) {
+        plot <- plot +
+          ggdist::stat_slab(
+            data = prior_data,
+            mapping = ggplot2::aes(
+              xdist = .data$prior,
+              group = interaction(.data$variable, .data$component),
+              scale = .data$.slab_scale,
+              slab_fill = "Prior distribution"
+            ),
+            inherit.aes = FALSE,
+            colour = NA,
+            alpha = 0.35,
+            trim = FALSE,
+            normalize = "xy",
+            show.legend = c(
+              slab_fill = TRUE,
+              fill = FALSE,
+              colour = FALSE,
+              alpha = FALSE,
+              thickness = FALSE,
+              .width = FALSE
+            )
+          )
+      }
+
       plot <- plot +
         ggdist::stat_slab(
+          mapping = posterior_slab_mapping,
           fill = NA,
           linewidth = 0.5,
           trim = FALSE,
@@ -429,6 +565,21 @@ powerscale_plot_dens.powerscaled_sequence <-
         ) +
         ggplot2::xlab(NULL) +
         ggplot2::ylab(NULL)
+
+      if (!is.null(prior_data)) {
+        plot <- plot +
+          ggplot2::scale_fill_manual(
+            aesthetics = "slab_fill",
+            values = c("Prior distribution" = "grey60"),
+            name = NULL
+          ) +
+          ggplot2::guides(
+            slab_fill = ggplot2::guide_legend(order = 10),
+            fill = "none",
+            .width = "none",
+            thickness = "none"
+          )
+      }
 
       if (!is.null(intervals)) {
         plot <- plot +

@@ -130,6 +130,12 @@ quantity functions. Passed as \code{.args} to
 
 \item{type}{Character specifying type of plot, one of "dens",
 "ecdf",or "quantities".}
+
+\item{prior}{An optional named \code{distributional} vector containing priors to
+overlay. Names must correspond to plotted variable names. Priors for
+variables that are not plotted, and plotted variables without a supplied
+prior, are silently ignored. Currently only used by
+\code{powerscale_plot_dens()}.}
 }
 \value{
 A ggplot object (or a \code{priorsense_plot} object which is a

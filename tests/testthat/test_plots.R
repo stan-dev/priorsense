@@ -56,6 +56,54 @@ test_that("plots contain expected data", {
   )
 })
 
+test_that("density plots accept named distributional priors", {
+  priors <- c(
+    mu = distributional::dist_normal(0, 5),
+    tau = distributional::dist_gamma(2, 1),
+    not_plotted = distributional::dist_normal(0, 1)
+  )
+
+  p <- powerscale_plot_dens(
+    ps,
+    variable = c("mu", "tau", "theta[1]"),
+    prior = priors
+  )
+
+  expect_s3_class(p, "ggplot")
+  expect_no_error(ggplot2::ggplot_build(p))
+
+  prior_layer <- p$layers[[1]]$data
+  expect_setequal(unique(prior_layer$variable), c("mu", "tau"))
+  expect_setequal(
+    unique(prior_layer$component),
+    c("prior", "likelihood")
+  )
+  expect_true(distributional::is_distribution(prior_layer$prior))
+  expect_null(p$scales$get_scales("thickness"))
+
+  expect_true(all(prior_layer$.slab_scale > 0))
+  expect_true(all(prior_layer$.slab_scale <= 1))
+  expect_true(all(p$data$.slab_scale > 0))
+  expect_true(all(p$data$.slab_scale <= 0.9))
+  expect_s3_class(p$scales$get_scales("slab_fill"), "ScaleDiscrete")
+  expect_identical(
+    p$layers[[1]]$mapping$slab_fill,
+    "Prior distribution"
+  )
+})
+
+test_that("density plots silently skip priors with no matching variables", {
+  p <- powerscale_plot_dens(
+    ps,
+    variable = "mu",
+    prior = c(tau = distributional::dist_gamma(2, 1))
+  )
+
+  expect_s3_class(p, "ggplot")
+  expect_no_error(ggplot2::ggplot_build(p))
+  expect_null(p$scales$get_scales("thickness"))
+})
+
 
 test_that("pagination of plots works as expected", {
   expect_length(
