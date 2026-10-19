@@ -1,3 +1,8 @@
+priorsense 1.4.0.9000
+---
++ fix `predictions_as_draws()` not working for multivariate models, thanks to @Sandhu-SS
+
+
 priorsense 1.4.0
 ---
 + `priorsense` is now an official Stan package, and links to pages and repositories have been updated
