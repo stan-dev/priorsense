@@ -53,7 +53,6 @@ predictions_as_draws <- function(
   predictions <- predict_fn(x, ...)
   dim_pred <- dim(predictions)
   if (!(mv)) {
-    # dim_pred <- dim(predictions) # Moved up before if (!(mv)) {
     if (length(dim_pred) == 3) {
       if (warn_dims) {
         warning(
